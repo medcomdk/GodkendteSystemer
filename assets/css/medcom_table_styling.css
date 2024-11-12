@@ -46,8 +46,6 @@
 }
 
 
-
-
 /*
 HEADER {
   position:-webkit-sticky; 
@@ -211,9 +209,6 @@ div[class="updated_timestamp"] {
 
 ***********************************************************/
 
-
-
-
 TABLE {  
 
 font-family: 'Cairo', Fallback, sans-serif; 
@@ -231,8 +226,8 @@ margin: 40px;
 tr {border-bottom: 1pt solid #F0F0F0;}
 
 /*Hover baggrundsfarve*/
-tr:hover {background-color: #006CFD;}
-/*tr:hover {background-color: #fffbfbc4;}*/
+/*tr:hover {background-color: #006CFD;}*/
+tr:hover {background-color: #fffbfbc4;}
 
 
 /* Table data*/
@@ -315,8 +310,6 @@ th:nth-child(1), th:nth-child(2), th:nth-child(3){
 /*********************************************************
  3 FØRSTE TABLE COLUMNS
 ***********************************************************/
-
-
 
 /*td kolonne #1*/
 td:nth-child(1), th:nth-child(1){
