@@ -1,0 +1,561 @@
+	/* MedCom – godkendelsesoversigter */
+
+@font-face {
+  font-display: swap;
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/cairo-v28-latin-regular.woff2") format("woff2");
+}
+
+:root {
+  --brand-blue: #006cfd;
+  --brand-blue-dark: #004fb9;
+  --ink: #002134;
+  --muted: #526773;
+  --line: #d9e2e7;
+  --line-strong: #bdcbd3;
+  --surface: #ffffff;
+  --surface-soft: #f3f7f9;
+  --surface-hover: #eef5ff;
+  --focus: #fec34d;
+  --success: #18733a;
+  --danger: #b42318;
+  --warning-bg: #fff1c2;
+  --warning-ink: #6b3c00;
+  --radius: 14px;
+  --shadow: 0 12px 32px rgba(0, 33, 52, 0.1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--surface-soft);
+  color: var(--ink);
+  font-family: "Cairo", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+.table_scroll:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.visually_hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip_link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+  transform: translateY(-150%);
+  transition: transform 150ms ease;
+}
+
+.skip_link:focus {
+  transform: translateY(0);
+}
+
+.cover_box_top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  padding: 1.5rem clamp(1rem, 4vw, 4rem) 1.25rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.headings_box {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.headings_box h1,
+.headings_box h2,
+.headings_box h3,
+.headings_box p {
+  margin: 0;
+}
+
+.headings_box h3 {
+  margin-bottom: 0.2rem;
+  color: var(--brand-blue-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.headings_box h1 {
+  max-width: 24ch;
+  font-size: clamp(1.75rem, 4vw, 2.7rem);
+  line-height: 1.1;
+}
+
+.headings_box h2 {
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+#medcom-logo {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#medcom-logo img {
+  display: block;
+  width: clamp(120px, 14vw, 175px);
+  height: auto;
+}
+
+.page_shell {
+  width: min(1800px, 100%);
+  margin: 0 auto;
+  padding: clamp(1rem, 2.5vw, 2rem);
+}
+
+.table_box {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+/* Eksisterende eksportfiler uden de nye wrappers er fortsat læsbare. */
+body > .table_box {
+  margin: clamp(1rem, 2.5vw, 2rem);
+  overflow: auto;
+}
+
+.table_controls {
+  position: relative;
+  z-index: 20;
+  padding: 1rem 1.25rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.controls_main {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.search_field {
+  display: grid;
+  flex: 1 1 32rem;
+  max-width: 46rem;
+  gap: 0.35rem;
+}
+
+.control_label {
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.global_search,
+.column_filter {
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.global_search {
+  min-height: 2.75rem;
+  padding: 0.65rem 0.85rem;
+  font-size: 1rem;
+}
+
+.global_search::placeholder,
+.column_filter::placeholder {
+  color: #6d7f89;
+  opacity: 1;
+}
+
+.controls_status {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.result_count {
+  min-width: 9rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.reset_button {
+  min-height: 2.75rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--brand-blue);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--brand-blue-dark);
+  font-weight: 700;
+}
+
+.reset_button:hover:not(:disabled) {
+  background: var(--surface-hover);
+}
+
+.reset_button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.controls_hint {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.table_scroll {
+  min-height: 22rem;
+  max-height: calc(100vh - 19rem);
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.table_box.has_no_results .table_scroll {
+  min-height: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 1120px;
+  border-spacing: 0;
+  border-collapse: separate;
+  background: var(--surface);
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.5rem 0.9rem;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+thead th,
+.table_box table > tbody > tr:first-child > th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  min-width: 145px;
+  height: 3.25rem;
+  padding: 0;
+  border-bottom-color: var(--line-strong);
+  background: #eaf0f3;
+  color: var(--ink);
+  text-align: left;
+}
+
+thead th:first-child,
+.table_box table > tbody > tr:first-child > th:first-child,
+tbody td:first-child {
+  position: sticky;
+  left: 0;
+}
+
+thead th:first-child,
+.table_box table > tbody > tr:first-child > th:first-child {
+  z-index: 14;
+}
+
+tbody td:first-child {
+  z-index: 2;
+  min-width: 190px;
+  background: var(--surface);
+  font-weight: 700;
+}
+
+.filter_row th {
+  top: 3.25rem;
+  z-index: 9;
+  height: 3.8rem;
+  padding: 0.55rem 0.65rem;
+  background: #f7f9fa;
+}
+
+.filter_row th:first-child {
+  z-index: 13;
+}
+
+.sort_button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0.75rem 2rem 0.75rem 0.9rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-weight: 700;
+  text-align: left;
+}
+
+.sort_button::after {
+  position: absolute;
+  top: 50%;
+  right: 0.8rem;
+  color: #627783;
+  content: "↕";
+  font-size: 0.9rem;
+  transform: translateY(-50%);
+}
+
+th[aria-sort="ascending"] .sort_button::after {
+  color: var(--brand-blue-dark);
+  content: "↑";
+}
+
+th[aria-sort="descending"] .sort_button::after {
+  color: var(--brand-blue-dark);
+  content: "↓";
+}
+
+.sort_button:hover {
+  background: #dce7ed;
+}
+
+.column_filter {
+  min-width: 125px;
+  min-height: 2.45rem;
+  padding: 0.48rem 0.58rem;
+  font-size: 0.82rem;
+}
+
+tbody tr:nth-child(even) td {
+  background: #fafcfd;
+}
+
+tbody tr:hover td {
+  background: var(--surface-hover);
+}
+
+tbody tr:nth-child(even) td:first-child {
+  background: #fafcfd;
+}
+
+tbody tr:hover td:first-child {
+  background: var(--surface-hover);
+}
+
+td:nth-child(5) {
+  font-variant-numeric: tabular-nums;
+}
+
+td > div {
+  display: block;
+}
+
+div[result="Godkendt"],
+div[result="Ikke Godkendt"],
+div[result="Tester"],
+div[result="Test mangler"],
+div[result="Godkendt m. forbehold"],
+div[result="Godkendt m. Forbehold"],
+div[result="Obligatorisk"],
+div[result="Anbefalet"] {
+  display: inline-flex;
+  min-width: 7rem;
+  min-height: 1.85rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+}
+
+div[result="Godkendt"] {
+  background: var(--success);
+  color: #fff;
+}
+
+div[result="Ikke Godkendt"],
+div[result="Test mangler"] {
+  background: var(--danger);
+  color: #fff;
+}
+
+div[result="Tester"] {
+  background: var(--warning-bg);
+  color: var(--warning-ink);
+}
+
+div[result="Godkendt m. forbehold"],
+div[result="Godkendt m. Forbehold"] {
+  background: #f9d3ad;
+  color: #6e3300;
+}
+
+div[result="Obligatorisk"] {
+  background: var(--brand-blue-dark);
+  color: #fff;
+}
+
+div[result="Anbefalet"] {
+  background: #d9e9ff;
+  color: #003b78;
+}
+
+.empty_state,
+.noscript_notice {
+  margin: 1.25rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .cover_box_top {
+    align-items: start;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .headings_box h1 {
+    font-size: 1.65rem;
+  }
+
+  #medcom-logo img {
+    width: 105px;
+  }
+
+  .page_shell {
+    padding: 0.75rem;
+  }
+
+  .controls_main {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .search_field {
+    flex-basis: auto;
+  }
+
+  .controls_status {
+    justify-content: space-between;
+  }
+
+  .result_count {
+    min-width: 0;
+    text-align: left;
+  }
+
+  .controls_hint {
+    display: none;
+  }
+
+  .table_scroll {
+    max-height: calc(100vh - 22rem);
+  }
+
+  tbody td:first-child {
+    min-width: 160px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .table_controls {
+    display: none;
+  }
+
+  .table_box {
+    border: 0;
+    box-shadow: none;
+  }
+
+  .table_scroll {
+    max-height: none;
+    overflow: visible;
+  }
+
+  thead th,
+  tbody td:first-child {
+    position: static;
+  }
+}
