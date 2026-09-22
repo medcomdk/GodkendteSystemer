@@ -25,6 +25,9 @@
   --warning-ink: #6b3c00;
   --radius: 14px;
   --shadow: 0 12px 32px rgba(0, 33, 52, 0.1);
+  --frozen-standard: 12.5rem;
+  --frozen-standard-id: 10.5rem;
+  --frozen-kanal: 7rem;
 }
 
 *,
@@ -103,9 +106,9 @@ select:focus-visible,
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 2rem;
+  gap: 1.25rem;
   width: 100%;
-  padding: 1.5rem clamp(1rem, 4vw, 4rem) 1.25rem;
+  padding: 0.85rem clamp(1rem, 2.5vw, 3rem);
   border-bottom: 1px solid var(--line);
   background: var(--surface);
 }
@@ -152,14 +155,14 @@ select:focus-visible,
 
 #medcom-logo img {
   display: block;
-  width: clamp(120px, 14vw, 175px);
+  width: clamp(105px, 11vw, 145px);
   height: auto;
 }
 
 .page_shell {
-  width: min(1800px, 100%);
+  width: min(2400px, 100%);
   margin: 0 auto;
-  padding: clamp(1rem, 2.5vw, 2rem);
+  padding: clamp(0.5rem, 1.25vw, 1.25rem);
 }
 
 .table_box {
@@ -179,7 +182,7 @@ body > .table_box {
 .table_controls {
   position: relative;
   z-index: 20;
-  padding: 1rem 1.25rem 0.8rem;
+  padding: 0.7rem 1rem 0.6rem;
   border-bottom: 1px solid var(--line);
   background: var(--surface);
 }
@@ -267,8 +270,8 @@ body > .table_box {
 }
 
 .table_scroll {
-  min-height: 22rem;
-  max-height: calc(100vh - 19rem);
+  min-height: 18rem;
+  max-height: calc(100vh - 14rem);
   overflow: auto;
   overscroll-behavior: contain;
   scrollbar-gutter: stable;
@@ -310,23 +313,64 @@ thead th,
   text-align: left;
 }
 
-thead th:first-child,
-.table_box table > tbody > tr:first-child > th:first-child,
-tbody td:first-child {
+thead th:nth-child(1),
+thead th:nth-child(2),
+thead th:nth-child(3),
+.table_box table > tbody > tr:first-child > th:nth-child(1),
+.table_box table > tbody > tr:first-child > th:nth-child(2),
+.table_box table > tbody > tr:first-child > th:nth-child(3),
+tbody td:nth-child(1),
+tbody td:nth-child(2),
+tbody td:nth-child(3) {
   position: sticky;
-  left: 0;
 }
 
 thead th:first-child,
-.table_box table > tbody > tr:first-child > th:first-child {
+.table_box table > tbody > tr:first-child > th:first-child,
+thead th:nth-child(2),
+.table_box table > tbody > tr:first-child > th:nth-child(2),
+thead th:nth-child(3),
+.table_box table > tbody > tr:first-child > th:nth-child(3) {
   z-index: 14;
 }
 
-tbody td:first-child {
+thead th:nth-child(1),
+.table_box table > tbody > tr:first-child > th:nth-child(1),
+tbody td:nth-child(1) {
+  left: 0;
+  min-width: var(--frozen-standard);
+  width: var(--frozen-standard);
+}
+
+thead th:nth-child(2),
+.table_box table > tbody > tr:first-child > th:nth-child(2),
+tbody td:nth-child(2) {
+  left: var(--frozen-standard);
+  min-width: var(--frozen-standard-id);
+  width: var(--frozen-standard-id);
+}
+
+thead th:nth-child(3),
+.table_box table > tbody > tr:first-child > th:nth-child(3),
+tbody td:nth-child(3) {
+  left: calc(var(--frozen-standard) + var(--frozen-standard-id));
+  min-width: var(--frozen-kanal);
+  width: var(--frozen-kanal);
+}
+
+tbody td:nth-child(1),
+tbody td:nth-child(2),
+tbody td:nth-child(3) {
   z-index: 2;
-  min-width: 190px;
   background: var(--surface);
+}
+
+tbody td:first-child {
   font-weight: 700;
+}
+
+tbody td:nth-child(3) {
+  white-space: nowrap;
 }
 
 .filter_row th {
@@ -337,7 +381,9 @@ tbody td:first-child {
   background: #f7f9fa;
 }
 
-.filter_row th:first-child {
+.filter_row th:nth-child(1),
+.filter_row th:nth-child(2),
+.filter_row th:nth-child(3) {
   z-index: 13;
 }
 
@@ -392,11 +438,15 @@ tbody tr:hover td {
   background: var(--surface-hover);
 }
 
-tbody tr:nth-child(even) td:first-child {
+tbody tr:nth-child(even) td:nth-child(1),
+tbody tr:nth-child(even) td:nth-child(2),
+tbody tr:nth-child(even) td:nth-child(3) {
   background: #fafcfd;
 }
 
-tbody tr:hover td:first-child {
+tbody tr:hover td:nth-child(1),
+tbody tr:hover td:nth-child(2),
+tbody tr:hover td:nth-child(3) {
   background: var(--surface-hover);
 }
 
@@ -514,11 +564,13 @@ div[result="Anbefalet"] {
   }
 
   .table_scroll {
-    max-height: calc(100vh - 22rem);
+    max-height: calc(100vh - 17rem);
   }
 
-  tbody td:first-child {
-    min-width: 160px;
+  :root {
+    --frozen-standard: 10.5rem;
+    --frozen-standard-id: 9.25rem;
+    --frozen-kanal: 6.25rem;
   }
 }
 
@@ -555,7 +607,9 @@ div[result="Anbefalet"] {
   }
 
   thead th,
-  tbody td:first-child {
+  tbody td:nth-child(1),
+  tbody td:nth-child(2),
+  tbody td:nth-child(3) {
     position: static;
   }
 }
