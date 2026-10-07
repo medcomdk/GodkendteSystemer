@@ -1,39 +1,49 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+﻿<!doctype html>
+<html lang="da">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fodterapisystemer</title>
 <META name="Author" content="MedCom">
 <META name="copyright" content="&copy; 2026 MedCom">
 <base target="_top">
-<LINK rel="stylesheet" type="text/css" href="../assets/css/medcom_table_styling.css">
+<link rel="stylesheet" type="text/css" href="../assets2/css/medcom_table_styling.css">
+<script src="../assets2/js/medcom_table.js" defer></script>
 </head>
 <body>
-<div class="cover_box_top">
+<a class="skip_link" href="#godkendelsesoversigt">G&aring; til tabellen</a>
+<header class="cover_box_top">
 <div id="medcom-logo">
-<img src="../assets/img/medcom_logo.png" alt="MedComs certificerings-logo">
+<img src="../assets2/img/medcom_logo.png" alt="MedComs certificerings-logo">
 </div>
 <div class="headings_box">
 <h3>Test og Certificering</h3>
 <h1>Fodterapisystemer</h1>
 <h2>
-Opdateret: 22-09-2026
+Opdateret: 07-10-2026
 </h2>
 </div>
-</div>
+</header>
+<main class="page_shell" id="main_content">
 <div class="table_box">
-<table width="100%">
+<noscript><p class="noscript_notice">Aktiv&eacute;r JavaScript for at bruge s&oslash;gning, filtrering og sortering.</p></noscript>
+<div class="table_scroll" tabindex="0" role="region" aria-label="Godkendelsesoversigt">
+<table id="godkendelsesoversigt" class="data_table">
+<caption class="visually_hidden">Godkendelsesoversigt</caption>
+<thead>
 <tr>
-<th>Standard</th>
-<th>Standard ID (Version)</th>
-<th>Kanal</th>
-<th>CBIT Fod (CBIT)</th>
-<th>ClinicCare fod (EG)</th>
-<th>Complimenta Fod (CGM)</th>
-<th>fodFORM (fodFORM)</th>
-<th>Fodstatushotel (MultiMed)</th>
-<th>TeraFORM Fod (fodFORM)</th>
+<th scope="col">Standard</th>
+<th scope="col">Standard ID (Version)</th>
+<th scope="col">Kanal</th>
+<th scope="col">CBIT Fod (CBIT)</th>
+<th scope="col">ClinicCare fod (EG)</th>
+<th scope="col">Complimenta Fod (CGM)</th>
+<th scope="col">fodFORM (fodFORM)</th>
+<th scope="col">Fodstatushotel (MultiMed)</th>
+<th scope="col">TeraFORM Fod (fodFORM)</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td><div result="Negativ VANS kvittering">Negativ VANS kvittering</div></td>
 <td><div result="CTL01 (C0130Q)">CTL01 (C0130Q)</div></td>
@@ -210,8 +220,11 @@ Opdateret: 22-09-2026
 <td><div result="&nbsp;">&nbsp;</div></td>
 <td><div result="Godkendt">Godkendt</div></td>
 </tr>
+</tbody>
 </table>
 </div>
+<p class="empty_state" hidden>Ingen resultater matcher de valgte filtre.</p>
 </div>
+</main>
 </body>
 </html>
